@@ -1,0 +1,8 @@
+[
+{ "departure":"Gdansk",
+	"destination":"Gdynia" 
+},
+{ "departure":"New York",
+	"destination":"Brussels" 
+}
+]
