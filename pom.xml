@@ -31,6 +31,19 @@
 			<scope>provided</scope>
 			<version>3.0.11.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-ee</artifactId>
+			<scope>provided</scope>
+			<version>9.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.wildfly</groupId>
+			<artifactId>wildfly-ejb3</artifactId>
+			<scope>provided</scope>
+			<version>9.0.1.Final</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>jpa-performance</finalName>
