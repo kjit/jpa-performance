@@ -3,6 +3,7 @@ package com.github.kjit.jpap.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -16,7 +17,8 @@ public class Flight implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(allocationSize = 1, initialValue = 1, name="flights_seq",sequenceName="flights_id_seq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="flights_seq")
 	@Column(unique=true, nullable=false)
 	private Integer id;
 
@@ -27,10 +29,10 @@ public class Flight implements Serializable {
 	private Long duration;
 
 	@Column(nullable=false)
-	private Timestamp sta;
+	private Date sta;
 
 	@Column(nullable=false)
-	private Timestamp std;
+	private Date std;
 
 	//bi-directional many-to-one association to Airline
 	@ManyToOne
@@ -74,19 +76,19 @@ public class Flight implements Serializable {
 		this.duration = duration;
 	}
 
-	public Timestamp getSta() {
-		return this.sta;
+	public Date getSta() {
+		return sta;
 	}
 
-	public void setSta(Timestamp sta) {
+	public void setSta(Date sta) {
 		this.sta = sta;
 	}
 
-	public Timestamp getStd() {
-		return this.std;
+	public Date getStd() {
+		return std;
 	}
 
-	public void setStd(Timestamp std) {
+	public void setStd(Date std) {
 		this.std = std;
 	}
 

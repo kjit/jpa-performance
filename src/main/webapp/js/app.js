@@ -11,11 +11,28 @@ ffApp.controller('FlightFindCtrl', ['$scope', 'ffService', function($scope, ffSe
 	};
 }]);
 
+ffApp.controller('FlightGeneratorCtrl', ['$scope', 'ffService', function($scope, ffService){
+
+	$scope.params = {
+		count : 10
+	};
+
+	$scope.generateFlights = function() {
+		ffService.generateFlights($scope.params.count).then(function(response){
+			$scope.info = response.data.response;
+		});
+	};
+}]);
+
 ffApp.service('ffService', function($http){
 	var self = this;
 	
 	self.getFlights = function(filters) {
-		return $http.get('rest/flights');
+		return $http.post('rest/flights', filters);
+	}
+
+	self.generateFlights = function(count) {
+		return $http.post('rest/flights/generate', count);
 	}
 });
 

@@ -3,6 +3,7 @@ package com.github.kjit.jpap.model;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 
 import java.math.BigDecimal;
 import java.util.List;

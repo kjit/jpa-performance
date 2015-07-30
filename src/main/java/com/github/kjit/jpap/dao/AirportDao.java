@@ -18,6 +18,8 @@ import com.github.kjit.jpap.model.Flight;
 public class AirportDao {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(AirportDao.class);
+
+	private static final String Q_EMPTY_AIRPORTS = "select a from Airport a where a.departures is empty and a.arrivals is empty";
 	
 	@PersistenceContext(unitName="flightPU")
 	EntityManager em;
@@ -26,5 +28,9 @@ public class AirportDao {
 	public void addAirport(Airport airport) {
 		em.persist(airport);
 	}
-	
+
+	public List<Airport> getAirportsWithoutFlights(int count) {
+		return em.createQuery(Q_EMPTY_AIRPORTS, Airport.class).setMaxResults(count).getResultList();
+	}
+
 }

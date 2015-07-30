@@ -12,6 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 /**
@@ -37,6 +38,7 @@ public class Airline implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to Flight
+	@XmlTransient
 	@OneToMany(mappedBy="airline")
 	private List<Flight> flights;
 
